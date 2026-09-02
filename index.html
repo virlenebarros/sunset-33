@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capítulo 33 </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Work+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+
+      --peach: #F2C8A2;
+
+      --rose: #EFA2B3;
+
+      --blush: #FFF3E9;
+
+      --mauve-deep: #9A5B68;
+
+      --plum-ink: #4C313A;
+
+      --coral: #E47A46;
+
+      --gold: #E9B67E;
+
+      --cocoa: #6A4238;
+
+      --night-haze: #2E1E2A;
+
+      --off-light: #FFF9F4;
+
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+
+      background: linear-gradient(180deg, #FFE6D6 0%, #FFD7C8 30%, #FBC6C8 62%, var(--off-light) 100%);
+
+    }
+
+    body {
+
+      font-family: 'Work Sans', sans-serif;
+
+      line-height: 1.6;
+
+      overflow-x: hidden;
+
+    }
+
+    .wrap {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ESTRUTURA SPLIT SCREEN (Tela Dividida) */
+
+    .split-layout {
+
+      display: flex;
+
+      flex-direction: column;
+      /* No celular: empilha */
+
+      width: 100%;
+
+    }
+
+    .left-side {
+
+      background: linear-gradient(180deg, #FFDCC5 0%, #FFCAA8 46%, #F5B6BE 100%);
+
+      width: 100%;
+
+    }
+
+    .right-side {
+
+      width: 100%;
+
+      background: var(--off-light);
+
+    }
+
+    /* HERO (Lado Esquerdo) */
+
+    .hero {
+
+      position: relative;
+
+      padding: 4.5rem 2rem 1rem;
+
+      text-align: center;
+
+      opacity: 0;
+
+      transform: translateY(14px);
+
+      animation: rise 1s ease-out forwards;
+
+    }
+
+    @keyframes rise {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .sun {
+      display: block;
+      margin: 0 auto 1.75rem;
+    }
+
+    .eyebrow {
+
+      font-size: 0.95rem;
+
+      color: #C76C43;
+
+      letter-spacing: 0.02em;
+
+      margin-bottom: 0.6rem;
+
+    }
+
+    h1 {
+
+      font-family: 'Fraunces', serif;
+
+      font-weight: 600;
+
+      font-size: clamp(2.4rem, 9vw, 3.2rem);
+
+      color: var(--cocoa);
+
+      line-height: 1.05;
+
+      margin-bottom: 0.9rem;
+
+    }
+
+    .hero p {
+
+      color: var(--plum-ink);
+
+      font-size: 1.05rem;
+
+      max-width: 32ch;
+
+      margin: 0 auto;
+
+      opacity: 0.88;
+
+    }
+
+    .waves {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: -1px;
+    }
+
+    /* SEÇÕES DE DETALHES (Lado Direito) */
+
+    section.blush {
+
+      background: #FFF6EE;
+
+      color: var(--plum-ink);
+
+      padding: 1.5rem 2rem 3rem;
+
+    }
+
+    h2 {
+
+      font-family: 'Fraunces', serif;
+
+      font-weight: 500;
+
+      font-size: 1.5rem;
+
+      margin-bottom: 0.9rem;
+
+      color: var(--cocoa);
+
+    }
+
+    section.blush p {
+      font-size: 1.02rem;
+      max-width: 46ch;
+      opacity: 0.88;
+    }
+
+    .details {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 1.1rem;
+
+      margin-top: 1.4rem;
+
+    }
+
+    .detail-row {
+
+      display: flex;
+
+      gap: 0.9rem;
+
+      align-items: baseline;
+
+      border-bottom: 1px solid rgba(106, 66, 56, 0.14);
+
+      padding-bottom: 1.1rem;
+
+    }
+
+    .detail-label {
+
+      font-size: 0.82rem;
+
+      color: #C06A43;
+
+      min-width: 5.2rem;
+
+      flex-shrink: 0;
+
+    }
+
+    .detail-value {
+      font-size: 1.02rem;
+    }
+
+    .fill {
+
+      color: rgba(76, 49, 58, 0.5);
+
+      font-style: italic;
+
+    }
+
+    section.mauve {
+
+      background: linear-gradient(160deg, #FFF2E6 0%, #FFE4D6 54%, #FFDCCF 100%);
+
+      padding: 3rem 2rem 3rem;
+
+    }
+
+    section.mauve h2 {
+      color: var(--cocoa);
+    }
+
+    ul.bring {
+      list-style: none;
+      margin-top: 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.95rem;
+    }
+
+    ul.bring li {
+
+      display: flex;
+
+      gap: 0.8rem;
+
+      font-size: 1rem;
+
+      color: var(--plum-ink);
+
+      opacity: 0.9;
+
+    }
+
+    ul.bring li::before {
+
+      content: "~";
+
+      color: #E79A55;
+
+      font-family: 'Fraunces', serif;
+
+      flex-shrink: 0;
+
+    }
+
+    section.closing {
+
+      background: #FFF7EF;
+
+      padding: 3rem 2rem 4rem;
+
+      text-align: center;
+
+    }
+
+    section.closing h2 {
+      font-size: 1.7rem;
+    }
+
+    .rsvp {
+
+      display: inline-block;
+
+      margin-top: 1.6rem;
+
+      padding: 0.85rem 2.1rem;
+
+      background: #D86F3D;
+
+      color: var(--blush);
+
+      text-decoration: none;
+
+      font-size: 0.98rem;
+
+      border-radius: 2px;
+
+      transition: transform 0.15s ease, background 0.15s ease;
+
+    }
+
+    .rsvp:hover {
+      background: #BF5F34;
+      transform: translateY(-2px);
+    }
+
+    .signoff {
+
+      margin-top: 2.2rem;
+
+      font-family: 'Fraunces', serif;
+
+      font-style: italic;
+
+      color: var(--cocoa);
+
+      font-size: 1.15rem;
+
+    }
+
+    /* Ajuste para o celular: deixar o botão um pouco menor e mais abaixo */
+
+    @media (max-width: 640px) {
+
+      .music-player {
+
+        bottom: 1rem;
+
+        right: 1rem;
+
+        padding: 0.5rem 1rem;
+
+        font-size: 0.8rem;
+
+      }
+
+    }
+
+    /* MEDIA QUERY PARA DESKTOP (Telas maiores) */
+
+    @media (min-width: 850px) {
+
+      .split-layout {
+
+        flex-direction: row;
+        /* Coloca lado a lado */
+
+        min-height: 100vh;
+
+      }
+
+      .left-side {
+
+        width: 45%;
+
+        position: sticky;
+        /* Mantém fixo na tela */
+
+        top: 0;
+
+        height: 100vh;
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        border-right: 1px solid rgba(106, 66, 56, 0.14);
+        /* Linha divisória sutil */
+
+      }
+
+      .right-side {
+
+        width: 55%;
+
+        /* O lado direito rola naturalmente */
+
+      }
+
+      .hero {
+
+        padding: 2rem 3rem;
+        /* Ajusta o respiro interno do lado esquerdo */
+
+      }
+
+      .waves {
+
+        display: none;
+        /* Esconde a onda no desktop para uma divisão reta e clean */
+
+      }
+
+      /* Dá um respiro bem maior e mais elegante para os textos no computador */
+
+      section.blush {
+
+        padding: 6rem 12% 4rem;
+
+      }
+
+      section.mauve {
+
+        padding: 5rem 12%;
+
+      }
+
+      section.closing {
+
+        padding: 5rem 12% 8rem;
+
+      }
+
+      .wrap {
+
+        max-width: 500px;
+
+        margin: 0;
+        /* Alinha o texto na grade em vez de centralizar no meio do nada */
+
+      }
+
+      section.closing .wrap {
+
+        margin: 0 auto;
+        /* Apenas a despedida fica centralizada na própria coluna */
+
+      }
+
+      .music-player {
+
+        position: fixed;
+
+        bottom: 2rem;
+
+        right: 2rem;
+
+        background: rgba(255, 243, 233, 0.72);
+        /* Cor blush transparente */
+
+        backdrop-filter: blur(8px);
+        /* Efeito de vidro fosco */
+
+        -webkit-backdrop-filter: blur(8px);
+
+        border: 1px solid rgba(106, 66, 56, 0.15);
+        /* Borda bem sutil */
+
+        color: var(--plum-ink);
+
+        padding: 0.6rem 1.2rem;
+
+        border-radius: 50px;
+
+        font-family: 'Work Sans', sans-serif;
+
+        font-size: 0.85rem;
+
+        letter-spacing: 0.02em;
+
+        cursor: pointer;
+
+        z-index: 1000;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 0.6rem;
+
+        transition: all 0.3s ease;
+
+        box-shadow: 0 6px 18px rgba(106, 66, 56, 0.07);
+
+      }
+
+      .music-player:hover {
+
+        background: var(--blush);
+
+        transform: translateY(-2px);
+
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Arquivo de áudio oculto -->
+  <audio id="bg-music" loop>
+    <!-- Substitua 'sua-musica.mp3' pelo nome do arquivo que você vai usar -->
+    <source src="assets/audio/sunset.mp3" type="audio/mpeg">
+  </audio>
+  <!-- Botão flutuante minimalista -->
+  <button id="music-btn" class="music-player">
+    <span id="music-icon">▶</span> play sunset vibe
+  </button>
+
+  <div class="split-layout">
+    <!-- LADO ESQUERDO: Fixo no desktop -->
+    <div class="left-side">
+      <div class="hero">
+        <svg class="sun" width="70" height="56" viewBox="0 0 70 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="35" cy="28" r="14" stroke="#E68A70" stroke-width="1.3" opacity="0.55" />
+          <circle cx="14" cy="12" r="1.6" fill="#E3AE7B" opacity="0.8" />
+          <circle cx="58" cy="18" r="1.2" fill="#E3AE7B" opacity="0.6" />
+          <circle cx="50" cy="44" r="1.4" fill="#E3AE7B" opacity="0.7" />
+        </svg>
+        <div class="eyebrow">eu, vocês, o mar e ela 🎶🎶</div>
+        <h1>Vem viver<br>essa noite<br>comigo</h1>
+        <p>Chegou meu aniversário e eu quero passar essa virada de ciclo assim: perto do mar 🌊, com quem eu gosto por perto, vendo a noite
+          passar.</p>
+        <p style="margin-top:1rem; font-family:'Fraunces', serif; font-style:italic; font-size:1.05rem;"> E é muito importante que você esteja lá! 🤎✨
+        </p>
+      </div>
+      <!-- Onda aparece apenas no celular conectando o header ao conteúdo -->
+      <svg class="waves" viewBox="0 0 560 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 20 Q 70 0, 140 20 T 280 20 T 420 20 T 560 20 V40 H0 Z" fill="#FFF8F2" />
+      </svg>
+    </div>
+    <!-- LADO DIREITO: Rolagem com os detalhes -->
+    <div class="right-side">
+      <section class="blush">
+        <div class="wrap">
+          <h2>Como eu imagino ✨</h2>
+          <p>Esse ano eu quero comemorar de um jeito simples e pensei em fazer na praia 🌴.
+          </p>
+          <p style="margin-top:1rem;">A ideia é reunir os meus amigos, levar algumas coisas pra comer e beber 🍹, colocar uma
+            música e aproveitar a noite sem muito roteiro.</p>
+          <div class="details">
+            <div class="detail-row">
+              <span class="detail-label">quando</span>
+              <span class="detail-value">12/09 (sábado de lua nova 🌛) a partir das 19h</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">onde</span>
+              <span class="detail-value">Beira-mar, ponto exato eu confirmo em breve</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">cadeiras</span>
+              <span class="detail-value">na barraca ao lado, aluguel de <strong>R$10</strong></span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="mauve">
+        <div class="wrap">
+          <h2>Bora combinar uns detalhes 🌺</h2>
+          <ul class="bring">
+            <li>Comida e bebida do seu jeito (fica a vontade pra levar), tem bastante opção ali por perto</li>
+            <li>Uma canga ou cadeira, se quiser mais conforto 🪑 (mas tem pra alugar também)</li>
+            <li>Um instrumento, se der vontade de tocar um pouco 🎶</li>
+            <li>Sua sugestão de música, vou montar uma playlist com o que a galera mandar 🎧</li>
+            <li>E, se quiser levar alguém, leva! ✨ só me dá um toque antes</li>
+          </ul>
+        </div>
+      </section>
+      <section class="closing">
+        <div class="wrap">
+          <h2>Confirma pra mim 💌</h2>
+          <p>Me avisa se vem, só pra eu ter uma ideia do tamanho do nosso grupo!🫶</p>
+          <a class="rsvp"
+            href="https://wa.me/85999914929?text=Oi%2C%20pode%20contar%20comigo%21%20%F0%9F%8C%8A%0A%0AAcompanhante%3A%20%28%20%20%29%20N%C3%A3o%20vou%20levar%20%2F%20%28%20%20%29%20Vou%20levar.%20Nome%3A%20_______%0A%0AEstou%20ciente%20de%20que%20o%20aluguel%20da%20cadeira%20%C3%A9%20R%24%2010%20%28mas%20que%20posso%20levar%20minha%20canga%20se%20eu%20quiser%29%20e%20que%20cada%20um%20leva%20sua%20comida%20e%20bebida.%20At%C3%A9%20l%C3%A1%21"
+            target="_blank">confirmar presença</a>
+          <div class="signoff">te espero na areia 🌊</div>
+          <p style="margin-top:1.8rem; font-size:0.92rem; opacity:0.75;">p.s.: leva um casaquinho leve, à noite a brisa
+            da praia é ótima mas engana</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script>
+
+    const audio = document.getElementById('bg-music');
+
+    const btn = document.getElementById('music-btn');
+
+    const icon = document.getElementById('music-icon');
+
+    let isPlaying = false;
+
+    btn.addEventListener('click', () => {
+
+      if (isPlaying) {
+
+        audio.pause();
+
+        icon.innerHTML = '▶';
+
+        btn.innerHTML = '<span id="music-icon">▶</span> play sunset vibe';
+
+      } else {
+
+        audio.play();
+
+        icon.innerHTML = '⏸';
+
+        btn.innerHTML = '<span id="music-icon">⏸</span> pausar som';
+
+      }
+
+      isPlaying = !isPlaying;
+
+    });
+  </script>
+
+</body>
+
+</html>
