@@ -361,6 +361,126 @@
 
     }
 
+    .music-player {
+
+      position: fixed;
+
+      bottom: 1.2rem;
+
+      right: 1.2rem;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 0.55rem;
+
+      padding: 0.58rem 1rem;
+
+      border: 1px solid rgba(106, 66, 56, 0.16);
+
+      border-radius: 999px;
+
+      background: linear-gradient(135deg, rgba(255, 248, 241, 0.92), rgba(255, 232, 214, 0.85));
+
+      color: var(--cocoa);
+
+      font-family: 'Work Sans', sans-serif;
+
+      font-size: 0.86rem;
+
+      font-weight: 500;
+
+      letter-spacing: 0.01em;
+
+      backdrop-filter: blur(10px);
+
+      -webkit-backdrop-filter: blur(10px);
+
+      box-shadow: 0 10px 22px rgba(106, 66, 56, 0.13);
+
+      cursor: pointer;
+
+      z-index: 1000;
+
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+
+    }
+
+    .music-player:hover {
+
+      transform: translateY(-2px) scale(1.01);
+
+      background: linear-gradient(135deg, rgba(255, 241, 229, 0.96), rgba(255, 220, 194, 0.9));
+
+      box-shadow: 0 14px 26px rgba(106, 66, 56, 0.16);
+
+    }
+
+    .music-player:active {
+
+      transform: translateY(0) scale(0.99);
+
+    }
+
+    .music-player .music-dot {
+
+      width: 0.52rem;
+
+      height: 0.52rem;
+
+      border-radius: 50%;
+
+      background: #FFB066;
+
+      box-shadow: 0 0 0 0 rgba(255, 176, 102, 0.45);
+
+      transition: background 0.2s ease;
+
+    }
+
+    .music-player .music-icon {
+
+      font-size: 0.92rem;
+
+      width: 1rem;
+
+      text-align: center;
+
+    }
+
+    .music-player.playing {
+
+      background: linear-gradient(135deg, rgba(255, 226, 204, 0.96), rgba(250, 195, 198, 0.9));
+
+      border-color: rgba(192, 106, 67, 0.25);
+
+      box-shadow: 0 14px 28px rgba(192, 106, 67, 0.2);
+
+    }
+
+    .music-player.playing .music-dot {
+
+      background: #E86D4A;
+
+      animation: pulse 1.2s ease-out infinite;
+
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(232, 109, 74, 0.45);
+      }
+
+      70% {
+        box-shadow: 0 0 0 10px rgba(232, 109, 74, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(232, 109, 74, 0);
+      }
+    }
+
     /* Ajuste para o celular: deixar o botão um pouco menor e mais abaixo */
 
     @media (max-width: 640px) {
@@ -474,56 +594,9 @@
 
       .music-player {
 
-        position: fixed;
-
         bottom: 2rem;
 
         right: 2rem;
-
-        background: rgba(255, 243, 233, 0.72);
-        /* Cor blush transparente */
-
-        backdrop-filter: blur(8px);
-        /* Efeito de vidro fosco */
-
-        -webkit-backdrop-filter: blur(8px);
-
-        border: 1px solid rgba(106, 66, 56, 0.15);
-        /* Borda bem sutil */
-
-        color: var(--plum-ink);
-
-        padding: 0.6rem 1.2rem;
-
-        border-radius: 50px;
-
-        font-family: 'Work Sans', sans-serif;
-
-        font-size: 0.85rem;
-
-        letter-spacing: 0.02em;
-
-        cursor: pointer;
-
-        z-index: 1000;
-
-        display: flex;
-
-        align-items: center;
-
-        gap: 0.6rem;
-
-        transition: all 0.3s ease;
-
-        box-shadow: 0 6px 18px rgba(106, 66, 56, 0.07);
-
-      }
-
-      .music-player:hover {
-
-        background: var(--blush);
-
-        transform: translateY(-2px);
 
       }
 
@@ -539,8 +612,10 @@
     <source src="assets/audio/sunset.mp3" type="audio/mpeg">
   </audio>
   <!-- Botão flutuante minimalista -->
-  <button id="music-btn" class="music-player">
-    <span id="music-icon">▶</span> play sunset vibe
+  <button id="music-btn" class="music-player" type="button" aria-pressed="false">
+    <span class="music-dot" aria-hidden="true"></span>
+    <span id="music-icon" class="music-icon" aria-hidden="true">▶</span>
+    <span id="music-label">play na vibe</span>
   </button>
 
   <div class="split-layout">
@@ -607,7 +682,7 @@
           <h2>Confirma pra mim 💌</h2>
           <p>Me avisa se vem, só pra eu ter uma ideia do tamanho do nosso grupo!🫶</p>
           <a class="rsvp"
-            href="https://wa.me/85999914929?text=Oi%2C%20pode%20contar%20comigo%21%20%F0%9F%8C%8A%0A%0AAcompanhante%3A%20%28%20%20%29%20N%C3%A3o%20vou%20levar%20%2F%20%28%20%20%29%20Vou%20levar.%20Nome%3A%20_______%0A%0AEstou%20ciente%20de%20que%20o%20aluguel%20da%20cadeira%20%C3%A9%20R%24%2010%20%28mas%20que%20posso%20levar%20minha%20canga%20se%20eu%20quiser%29%20e%20que%20cada%20um%20leva%20sua%20comida%20e%20bebida.%20At%C3%A9%20l%C3%A1%21"
+            href="https://wa.me/5585999914929?text=Oi%2C%20pode%20contar%20comigo%21%20%F0%9F%8C%8A%0A%0AAcompanhante%3A%20%28%20%20%29%20N%C3%A3o%20vou%20levar%20%2F%20%28%20%20%29%20Vou%20levar.%20Nome%3A%20_______%0A%0AEstou%20ciente%20de%20que%20o%20aluguel%20da%20cadeira%20%C3%A9%20R%24%2010%20%28mas%20que%20posso%20levar%20minha%20canga%20se%20eu%20quiser%29%20e%20que%20cada%20um%20leva%20sua%20comida%20e%20bebida.%20At%C3%A9%20l%C3%A1%21"
             target="_blank">confirmar presença</a>
           <div class="signoff">te espero na areia 🌊</div>
           <p style="margin-top:1.8rem; font-size:0.92rem; opacity:0.75;">p.s.: leva um casaquinho leve, à noite a brisa
@@ -626,6 +701,8 @@
 
     const icon = document.getElementById('music-icon');
 
+    const label = document.getElementById('music-label');
+
     let isPlaying = false;
 
     btn.addEventListener('click', () => {
@@ -634,17 +711,25 @@
 
         audio.pause();
 
-        icon.innerHTML = '▶';
+        icon.textContent = '▶';
 
-        btn.innerHTML = '<span id="music-icon">▶</span> play sunset vibe';
+        label.textContent = 'play na vibe';
+
+        btn.classList.remove('playing');
+
+        btn.setAttribute('aria-pressed', 'false');
 
       } else {
 
         audio.play();
 
-        icon.innerHTML = '⏸';
+        icon.textContent = '⏸';
 
-        btn.innerHTML = '<span id="music-icon">⏸</span> pausar som';
+        label.textContent = 'tocando sunset';
+
+        btn.classList.add('playing');
+
+        btn.setAttribute('aria-pressed', 'true');
 
       }
 
